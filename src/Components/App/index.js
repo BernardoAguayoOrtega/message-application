@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function App() {
+export function App() {
 	//use state hook
 	const [inputContent, setInputContent] = useState('');
 	const [messages, setMessages] = useState([]);
@@ -20,7 +20,9 @@ function App() {
 			setMessages([...messages, inputContent]);
 			setInputContent('');
 		}
-	};
+  };
+
+  console.log(messages)
 
 	return (
 		<>
@@ -36,5 +38,3 @@ function App() {
 		</>
 	);
 }
-
-export default App;
