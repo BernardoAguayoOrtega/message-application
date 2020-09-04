@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function App() {
+	//use state hook
+  const [input, setInput] = useState('');
+  const [messages, setMessages] = useState([]);
+
+  //function to sen message
+  const sendMessage = (e) => {
+
+  }
+
 	return (
-		<div className='App'>
-			<h1> Hello there</h1>
-		</div>
+		<>
+			<input value={input} onClick={sendMessage} onChange={event => setInput(event.target.value)}/>
+			<button>Sen message</button>
+		</>
 	);
 }
 
