@@ -2,18 +2,37 @@ import React, { useState } from 'react';
 
 function App() {
 	//use state hook
-  const [input, setInput] = useState('');
-  const [messages, setMessages] = useState([]);
+	const [inputContent, setInputContent] = useState('');
+	const [messages, setMessages] = useState([]);
 
-  //function to sen message
-  const sendMessage = (e) => {
+	//const handler change
+	const handlerChange = (e) => setInputContent(e.target.value);
 
-  }
+	//function to sen message
+	const sendMessage = () => {
+		setMessages([...messages, inputContent]);
+		setInputContent('');
+	};
+
+	//function on click press enter
+	const senMessageWithEnterKey = (e) => {
+		if (e.which === 13) {
+			setMessages([...messages, inputContent]);
+			setInputContent('');
+		}
+	};
 
 	return (
 		<>
-			<input value={input} onClick={sendMessage} onChange={event => setInput(event.target.value)}/>
-			<button>Sen message</button>
+			<input
+				value={inputContent}
+				onChange={handlerChange}
+				onKeyPress={senMessageWithEnterKey}
+			/>
+			<button onClick={sendMessage}>Send message</button>
+			{messages.map((message) => (
+				<p>{message}</p>
+			))}
 		</>
 	);
 }
