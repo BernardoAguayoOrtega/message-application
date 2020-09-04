@@ -9,32 +9,24 @@ export function App() {
 	const handlerChange = (e) => setInputContent(e.target.value);
 
 	//function to sen message
-	const sendMessage = () => {
+	const sendMessage = (e) => {
+    e.preventDefault()
 		setMessages([...messages, inputContent]);
 		setInputContent('');
 	};
 
-	//function on click press enter
-	const senMessageWithEnterKey = (e) => {
-		if (e.which === 13) {
-			setMessages([...messages, inputContent]);
-			setInputContent('');
-		}
-  };
-
-  console.log(messages)
-
 	return (
 		<>
-			<input
-				value={inputContent}
-				onChange={handlerChange}
-				onKeyPress={senMessageWithEnterKey}
-			/>
-			<button onClick={sendMessage}>Send message</button>
-			{messages.map((message) => (
-				<p>{message}</p>
-			))}
+			<form>
+				<input
+					value={inputContent}
+					onChange={handlerChange}
+				/>
+				<button type='submit' onClick={sendMessage}>Send message</button>
+				{messages.map((message) => (
+					<p>{message}</p>
+				))}
+			</form>
 		</>
 	);
 }
