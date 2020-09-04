@@ -1,12 +1,9 @@
 //import react adn its states
 import React, { useState } from 'react';
+//import message
+import { Message } from '../Message';
 //import material ui components
-import {
-	Button,
-	Input,
-	FormControl,
-	InputLabel,
-} from '@material-ui/core';
+import { Button, Input, FormControl, InputLabel } from '@material-ui/core';
 
 export function App() {
 	//use state hook
@@ -40,7 +37,7 @@ export function App() {
 				</FormControl>
 			</form>
 			{messages.map((message) => (
-				<p>{message}</p>
+				<Message text={message}/>
 			))}
 		</>
 	);
