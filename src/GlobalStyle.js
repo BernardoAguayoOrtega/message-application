@@ -9,6 +9,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body{
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -1,4 +1,12 @@
+//import react adn its states
 import React, { useState } from 'react';
+//import material ui components
+import {
+	Button,
+	Input,
+	FormControl,
+	InputLabel,
+} from '@material-ui/core';
 
 export function App() {
 	//use state hook
@@ -10,7 +18,7 @@ export function App() {
 
 	//function to sen message
 	const sendMessage = (e) => {
-    e.preventDefault()
+		e.preventDefault();
 		setMessages([...messages, inputContent]);
 		setInputContent('');
 	};
@@ -18,15 +26,22 @@ export function App() {
 	return (
 		<>
 			<form>
-				<input
-					value={inputContent}
-					onChange={handlerChange}
-				/>
-				<button type='submit' onClick={sendMessage}>Send message</button>
-				{messages.map((message) => (
-					<p>{message}</p>
-				))}
+				<FormControl>
+					<InputLabel>Enter a message...</InputLabel>
+					<Input value={inputContent} onChange={handlerChange} />
+					<Button
+						disabled={!inputContent}
+						variant='contained'
+						color='primary'
+						type='submit'
+						onClick={sendMessage}>
+						Send message
+					</Button>
+				</FormControl>
 			</form>
+			{messages.map((message) => (
+				<p>{message}</p>
+			))}
 		</>
 	);
 }
