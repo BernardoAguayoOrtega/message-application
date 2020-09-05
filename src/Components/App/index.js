@@ -61,10 +61,12 @@ export function App() {
 		<>
 			<Typography
 				align='center'
-				variant='h2'>{`Welcome ${userName}`}</Typography>
+				variant='h5'>{`Welcome ${userName}`}</Typography>
 			<Form>
-				<FormControl variant='outlined'>
-					<InputLabel>Enter a message...</InputLabel>
+				<FormControl>
+					<InputLabel variant='outlined' color='primary'>
+						Enter a message...
+					</InputLabel>
 					<Input value={inputContent} onChange={handlerChange} />
 					<Button
 						disabled={!inputContent}
