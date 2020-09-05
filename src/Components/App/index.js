@@ -12,22 +12,27 @@ import {
 	InputLabel,
 	Typography,
 } from '@material-ui/core';
+//import data base
+import { db, timestamp } from '../utils/firebase';
 
 export function App() {
 	//use state hook
 	const [userName, setUserName] = useState('');
 	const [inputContent, setInputContent] = useState('');
-	const [messages, setMessages] = useState([
-		{ username: 'Bernardo', text: 'Hey there!' },
-		{ username: 'Guillermo', text: 'Hey there!' },
-	]);
+	const [messages, setMessages] = useState([]);
 
-	//use effect
+	//use effect for ask the name
 	useEffect(() => {
 		const name = window.prompt('Plese enter your name');
 		setUserName(name ? name : 'Unknown user');
 	}, []);
-	
+
+	//use effect to bring the date from data base
+	useEffect(() => {
+		db.collection('messages').orderBy('timestamp', 'desc').onSnapshot((snapshot) => {
+			setMessages(snapshot.docs.map((doc) => doc.data()));
+		});
+	}, []);
 
 	//const handler change
 	const handlerChange = (e) => setInputContent(e.target.value);
@@ -35,7 +40,14 @@ export function App() {
 	//function to sen message
 	const sendMessage = (e) => {
 		e.preventDefault();
-		setMessages([...messages, { username: userName, text: inputContent }]);
+
+		db.collection('messages').add({ 
+			username: userName, 
+			message: inputContent,
+			timestamp: timestamp()
+		})
+
+		//set messages white
 		setInputContent('');
 	};
 
