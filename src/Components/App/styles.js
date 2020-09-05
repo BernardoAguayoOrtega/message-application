@@ -3,8 +3,12 @@ import styled from 'styled-components'
 
 //creat and export Form component
 export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  position:fixed;
+  padding:2rem;
+  bottom: 1rem;
+  z-index: 1;
+  background-color: rgba(0,0,0,.2);
+  width:80%;
+  display:flex;
+  justify-content:center;
 `
