@@ -7,6 +7,7 @@ import { Button, Input, FormControl, InputLabel } from '@material-ui/core';
 
 export function App() {
 	//use state hook
+	const [userName, setUserName] = useState('');
 	const [inputContent, setInputContent] = useState('');
 	const [messages, setMessages] = useState([]);
 
@@ -37,7 +38,7 @@ export function App() {
 				</FormControl>
 			</form>
 			{messages.map((message) => (
-				<Message text={message}/>
+				<Message text={message} />
 			))}
 		</>
 	);
