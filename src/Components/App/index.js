@@ -23,11 +23,11 @@ export function App() {
 	]);
 
 	//use effect
-	/*useEffect(() => {
+	useEffect(() => {
 		const name = window.prompt('Plese enter your name');
 		setUserName(name ? name : 'Unknown user');
 	}, []);
-	*/
+	
 
 	//const handler change
 	const handlerChange = (e) => setInputContent(e.target.value);
@@ -59,7 +59,7 @@ export function App() {
 				</FormControl>
 			</Form>
 			{messages.map((message) => (
-				<Message username={message.username} text={message.text} />
+				<Message username={userName} message={message} />
 			))}
 		</>
 	);

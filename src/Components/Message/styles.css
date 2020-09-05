@@ -1,0 +1,22 @@
+/*message styles*/
+.message{
+  padding: 1rem;
+  margin: 1rem;
+  width: fit-content;
+  border-radius: 1rem !important;
+}
+
+.message__user{
+  margin-left: auto;
+  color: wheat !important;
+  text-align: right !important;
+}
+
+.message__userCard {
+  background-color: indianred !important;
+}
+
+.message__guestCard{
+  background-color: khaki !important;
+  color: brown !important;
+}
