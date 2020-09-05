@@ -17,9 +17,15 @@ export const Message = forwardRef(({ username, content }, ref) => {
 					isUser ? 'message__user message__userCard ' : 'message__guestCard'
 				}`}>
 				<CardContent>
-					<Typography variant='h5' component='h2'>
-						{`${content.data.username}: ${content.data.message}`}
-					</Typography>
+					{isUser ? (
+						<Typography variant='h5' component='h2'>
+							{`${content.data.message}`}
+						</Typography>
+					) : (
+						<Typography variant='h5' component='h2'>
+							{`${content.data.username}: ${content.data.message}`}
+						</Typography>
+					)}
 				</CardContent>
 			</Card>
 		</div>

@@ -9,6 +9,4 @@ export const Form = styled.form`
   z-index: 1;
   background-color: rgba(0,0,0,.2);
   width:80%;
-  display:flex;
-  justify-content:center;
 `
