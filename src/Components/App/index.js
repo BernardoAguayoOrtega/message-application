@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 //import message
 import { Message } from '../Message';
+//import styled components
+import { Form } from './styles';
 //import material ui components
 import {
 	Button,
@@ -21,10 +23,11 @@ export function App() {
 	]);
 
 	//use effect
-	useEffect(() => {
+	/*useEffect(() => {
 		const name = window.prompt('Plese enter your name');
 		setUserName(name ? name : 'Unknown user');
 	}, []);
+	*/
 
 	//const handler change
 	const handlerChange = (e) => setInputContent(e.target.value);
@@ -38,9 +41,11 @@ export function App() {
 
 	return (
 		<>
-			<Typography variant='h2'>{`Welcome ${userName}`}</Typography>
-			<form>
-				<FormControl>
+			<Typography
+				align='center'
+				variant='h2'>{`Welcome ${userName}`}</Typography>
+			<Form>
+				<FormControl variant='outlined'>
 					<InputLabel>Enter a message...</InputLabel>
 					<Input value={inputContent} onChange={handlerChange} />
 					<Button
@@ -52,7 +57,7 @@ export function App() {
 						Send message
 					</Button>
 				</FormControl>
-			</form>
+			</Form>
 			{messages.map((message) => (
 				<Message username={message.username} text={message.text} />
 			))}
