@@ -14,6 +14,8 @@ import {
 } from '@material-ui/core';
 //import data base
 import { db, timestamp } from '../utils/firebase';
+// import flip move
+import FlipMove from 'react-flip-move';
 
 export function App() {
 	//use state hook
@@ -29,9 +31,13 @@ export function App() {
 
 	//use effect to bring the date from data base
 	useEffect(() => {
-		db.collection('messages').orderBy('timestamp', 'desc').onSnapshot((snapshot) => {
-			setMessages(snapshot.docs.map((doc) => doc.data()));
-		});
+		db.collection('messages')
+			.orderBy('timestamp', 'desc')
+			.onSnapshot((snapshot) => {
+				setMessages(
+					snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })),
+				);
+			});
 	}, []);
 
 	//const handler change
@@ -41,11 +47,11 @@ export function App() {
 	const sendMessage = (e) => {
 		e.preventDefault();
 
-		db.collection('messages').add({ 
-			username: userName, 
+		db.collection('messages').add({
+			username: userName,
 			message: inputContent,
-			timestamp: timestamp()
-		})
+			timestamp: timestamp(),
+		});
 
 		//set messages white
 		setInputContent('');
@@ -70,9 +76,11 @@ export function App() {
 					</Button>
 				</FormControl>
 			</Form>
-			{messages.map((message) => (
-				<Message username={userName} message={message} />
-			))}
+			<FlipMove>
+				{messages.map((message) => (
+					<Message key={message.id} username={userName} content={message} />
+				))}
+			</FlipMove>
 		</>
 	);
 }
