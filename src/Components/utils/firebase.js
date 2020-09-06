@@ -5,13 +5,13 @@ import 'firebase/firestore';
 
 //start de data base
 firebase.initializeApp({
-	apiKey: 'AIzaSyAQbz2Kmrstvd2XMxGLaL6FUd3NuNGlcCs',
-	authDomain: 'test-3bd1f.firebaseapp.com',
-	databaseURL: 'https://test-3bd1f.firebaseio.com',
-	projectId: 'test-3bd1f',
-	storageBucket: 'test-3bd1f.appspot.com',
-	messagingSenderId: '523142341168',
-	appId: '1:523142341168:web:1e20714c12c0952373c3f5',
+	apiKey: "AIzaSyAj_0SXqCFY49F2Z-h2WEKmFX9ClVie7xk",
+	authDomain: "message-app-a67e3.firebaseapp.com",
+	databaseURL: "https://message-app-a67e3.firebaseio.com",
+	projectId: "message-app-a67e3",
+	storageBucket: "message-app-a67e3.appspot.com",
+	messagingSenderId: "502325470559",
+	appId: "1:502325470559:web:9fcaa1a8bea0154e8d02ea"
 });
 
 //connection to data base
